@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:id="@+id/billView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Bill Amount: "
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/billAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/billView"
+        android:layout_toRightOf="@+id/billView"
+        android:ems="5"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/dinerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/billView"
+        android:text="# of Diners: "
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/dinerAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/billAmount"
+        android:layout_alignStart="@+id/billAmount"
+        android:layout_below="@+id/billAmount"
+        android:ems="5"
+        android:inputType="number" />
+
+    <SeekBar
+        android:id="@+id/barOfSeeks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/barLabel"
+        android:max="30"
+        android:progress="0"
+        android:layout_marginTop="18dp" />
+
+    <TextView
+        android:id="@+id/barLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dinerAmount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:text="0%"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/buttonCalc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/barOfSeeks"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="91dp"
+        android:onClick="buttonPress"
+        android:text="Math" />
+
+    <CheckBox
+        android:id="@+id/splitBill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/barOfSeeks"
+        android:layout_marginTop="28dp"
+        android:text="Split Bill?" />
+
+    <TextView
+        android:id="@+id/totalTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttonCalc"
+        android:layout_marginTop="40dp"
+        android:text="Tip Amount: "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/totalBill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/totalTip"
+        android:layout_marginTop="27dp"
+        android:text="Total Owed: "
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/totalTip"
+        android:layout_alignBottom="@+id/totalTip"
+        android:layout_toEndOf="@+id/dinerView"
+        android:layout_toRightOf="@+id/dinerView"
+        android:text="0.0"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/bill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/totalBill"
+        android:layout_alignBottom="@+id/totalBill"
+        android:layout_alignLeft="@+id/tip"
+        android:layout_alignStart="@+id/tip"
+        android:text="0.0"
+        android:textSize="20sp" />
+
+
+</RelativeLayout>
