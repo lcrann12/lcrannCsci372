@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.tipcalculator.TipCalc">
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/billAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/titleView"
+            android:ems="5"
+            android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/billAmount"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/billAmount"
+                android:layout_toStartOf="@+id/billAmount"
+                android:textSize="30sp"
+                android:textColor="#1A2BFF"
+                android:text="@string/inputOne" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
+        android:text="@string/inputTwo"
+        android:textColor="#1A2BFF"
+        android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/dinerAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textView"
+            android:ems="5"
+            android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/mathCalc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/barOfSeeks"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        android:onClick="buttonPressed"
+        android:text="@string/buttonMath" />
+
+    <TextView
+        android:id="@+id/amountOwed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/barLabel"
+        android:layout_alignStart="@+id/barLabel"
+        android:layout_alignTop="@+id/textView4"
+        android:text="0"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView3"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_below="@+id/mathCalc"
+        android:layout_marginTop="24dp"
+        android:text="Amount you Owe:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dinerAmount"
+        android:text="@string/outputOne"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/resultView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dinerAmount"
+        android:layout_centerHorizontal="true"
+        android:text="0"
+        android:textSize="30sp"/>
+    <TextView
+        android:id="@+id/barLabel"
+        android:text="0"
+        android:textSize="20sp"
+        android:layout_below="@+id/resultView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+    <SeekBar
+        android:id="@+id/barOfSeeks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="30"
+        android:layout_alignEnd="@+id/dinerAmount"
+        android:layout_alignRight="@+id/dinerAmount"
+        android:layout_below="@+id/barLabel"/>
+
+    <CheckBox
+        android:id="@+id/splitText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/mathCalc"
+        android:text="Split bill?" />
+
+</RelativeLayout>
