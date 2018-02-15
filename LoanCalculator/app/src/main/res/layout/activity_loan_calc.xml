@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.loancalculator.LoanCalc">
+
+    <TextView
+        android:id="@+id/costView"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#1122DD"
+        android:gravity="center"
+        android:layout_marginVertical="7dp"
+        android:text="Cost of Car:"
+        android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/costAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:ems="5"
+            android:inputType="numberDecimal"/>
+    <TextView
+        android:id="@+id/downView"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/costView"
+        android:textColor="#1122DD"
+        android:text="Down Payment: "
+        android:layout_marginVertical="18dp"
+        android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/downAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_below="@+id/costAmount"
+            android:ems="5"
+            android:inputType="numberDecimal"/>
+    <TextView
+        android:id="@+id/aprView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#1122DD"
+        android:layout_below="@id/downView"
+        android:textSize="20sp"
+        android:text="APR:" />
+        <EditText
+            android:id="@+id/aprAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:layout_below="@id/downAmount"
+            android:layout_marginLeft="250dp"
+            android:inputType="numberDecimal"/>
+    <RadioGroup
+        android:id="@+id/groupButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/aprView"
+        android:checkedButton="@id/loanButton"
+        android:layout_centerHorizontal="true">
+
+        <RadioButton
+            android:id="@+id/loanButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:layout_marginEnd="3dp"
+            android:text="Loan" />
+
+        <RadioButton
+            android:id="@+id/leaseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lease" />
+
+    </RadioGroup>
+
+    <SeekBar
+        android:id="@+id/monthSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:max="60"
+        android:progress="1"/>
+
+    <Button
+        android:id="@+id/calcButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/monthSelector"
+        android:layout_centerHorizontal="true"
+        android:text="Calculate"
+        android:onClick="buttonPressed"
+        android:textColor="#FF1122"/>
+
+    <TextView
+        android:id="@+id/viewLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calcButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textSize="20sp"
+        android:text="Monthly Payment: " />
+
+    <TextView
+        android:id="@+id/resultView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/viewLabel"
+        android:layout_marginTop="19dp"
+        android:textSize="20sp"
+        android:text="$0.00" />
+
+    <TextView
+        android:id="@+id/barLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/monthSelector"
+        android:layout_centerHorizontal="true"
+        android:text="Length of Loan (months): 1"
+        android:textSize="12sp"/>
+
+
+</RelativeLayout>
