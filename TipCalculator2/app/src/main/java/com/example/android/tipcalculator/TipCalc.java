@@ -1,11 +1,13 @@
 package com.example.android.tipcalculator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +21,7 @@ public class TipCalc extends AppCompatActivity {
     private CheckBox splitText;
     private TextView barLabel;
     private TextView amountOwed;
-
+    private RelativeLayout layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,8 @@ public class TipCalc extends AppCompatActivity {
                 }
         );
         dinerAmount = findViewById(R.id.dinerAmount);
-
+        layout = findViewById(R.id.layout);
+        //layout.setBackgroundColor(0xEEFFEE00);
         barOfSeeks = findViewById(R.id.barOfSeeks);
         barOfSeeks.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
@@ -87,5 +90,16 @@ public class TipCalc extends AppCompatActivity {
         amountOwed.setText(totalBill+"");
 
     }
+    public void extraButtonPressed(View v){
+        Intent i = new Intent(this, ColorActivity.class);
+        startActivityForResult(i, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        int color = data.getIntExtra("COLOR", 0xFFFF0000);
+        layout.setBackgroundColor(color);
+    }
+
 
 }

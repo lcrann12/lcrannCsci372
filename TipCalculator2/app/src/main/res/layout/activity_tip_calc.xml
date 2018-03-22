@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:id="@+id/layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -69,6 +70,16 @@
         android:layout_marginTop="85dp"
         android:onClick="buttonPressed"
         android:text="@string/buttonMath" />
+    <Button
+        android:id="@+id/newButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mathCalc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        android:onClick="extraButtonPressed"
+        android:text="New Guy" />
+
 
     <TextView
         android:id="@+id/amountOwed"
