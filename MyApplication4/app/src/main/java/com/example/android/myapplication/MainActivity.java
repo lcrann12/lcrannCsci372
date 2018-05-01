@@ -6,37 +6,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private GridLayout grid;
+    private GridLayout grid;//L
     private SeekBar seeker;
-    private TextView barLabel;
+    private TextView barLabel;//E
     private Button spinStop;
-    private boolean isSpin;
+    private boolean isSpin=true;
     private Handler handler;
-    private Update update;
+    private Update update;//N
     private Random rand;
-    private TextView points;
+    private TextView points;//N
+    private int pointSystem=0;
 
+    private int imageA[] = {R.drawable.pear, R.drawable.cherry, R.drawable.grape, R.drawable.strawberry};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         grid = findViewById(R.id.grid);
-        handler = new Handler();
+        handler = new Handler();//Y
         update = new Update();
         spinStop = findViewById(R.id.spinStop);
-        spinStop.setText("SPIN");
-        isSpin = true;
         barLabel = findViewById(R.id.barLabel);
-        int imageA[] = {R.drawable.pear, R.drawable.cherry, R.drawable.grape, R.drawable.strawberry};
         points = findViewById(R.id.points);
         rand = new Random();
         seeker = findViewById(R.id.seeker);
@@ -58,82 +60,77 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-        for(int i=0; i<3;i++){
+        //handler.postDelayed(update, 200);
+        for(int i=0; i<grid.getColumnCount();i++){
             ImageView imageView = (ImageView) getLayoutInflater().inflate(R.layout.image_layout, grid, false);
-            Drawable image = getResources().getDrawable(imageA[i]);
+            Drawable image = getResources().getDrawable(imageA[rand.nextInt(imageA.length)]);
             imageView.setImageDrawable(image);
             grid.addView(imageView);
         }
+
         //handler.postDelayed(update, 500);
         /*for(int i=0; i<3; i++) {
             ImageView imageView = (ImageView) getLayoutInflater().inflate(R.layout.image_layout, grid, false);
             Drawable image = getResources().getDrawable(R.drawable.strawberry);
             imageView.setImageDrawable(image);
             grid.addView(imageView);
-
-
         }*/
     }
-    public void buttonPressed(View v) {
-        int time = 500;///(1+seeker.getProgress());
-        int i = 0;
-        int pointSystem=0;
-        Random rand = new Random();
-        int imageA[] = {R.drawable.cherry, R.drawable.strawberry, R.drawable.grape, R.drawable.pear};
-        if (isSpin) {
-            spinStop.setText("STOP");
-            isSpin = false;
-            while (isSpin) {
+    public void buttonPressed(View v) {//L
 
-                ImageView imageView = (ImageView) getLayoutInflater().inflate(R.layout.image_layout, grid, false);
-                Drawable image = getResources().getDrawable(imageA[i]);
+        int speedUp = seeker.getProgress()*10;//'S
+        if (isSpin==true) { //the button's text is set to SPIN, meaning the button hasn't been pressed yet
+            spinStop.setText("STOP");//C
+            grid.removeAllViews();//O
+            for(int i=0; i<grid.getColumnCount();i++){//D
+                ImageView imageView = (ImageView) getLayoutInflater().inflate(R.layout.image_layout, grid, false);//E
+                Drawable image = getResources().getDrawable(imageA[rand.nextInt(imageA.length)]);
                 imageView.setImageDrawable(image);
-                grid.removeViewAt(i);
-                grid.addView(imageView, i);
-                if(i<3) {
-                    i++;
-                }else{
-                    i=0;
-                }
+                grid.addView(imageView);//E
+
             }
-            handler.postDelayed(update, 500);
 
+            handler.postDelayed(update, 200-speedUp);
+            isSpin = false;//L
+        } else{ //button text was set to STOP, meaning it had been pressed- Lenny's code Watermark
+            spinStop.setText("SPIN");//E
 
+            Drawable grid1 = ((ImageView)grid.getChildAt(0)).getDrawable(); //type case and add variables here
+            Drawable grid2 = ((ImageView)grid.getChildAt(1)).getDrawable();
+            Drawable grid3 = ((ImageView)grid.getChildAt(2)).getDrawable();
+            Drawable.ConstantState slot1 = grid1.getConstantState();
+            Drawable.ConstantState slot2 = grid2.getConstantState();
+            Drawable.ConstantState slot3 = grid3.getConstantState();
 
-        } else {
-            if(grid.getChildAt(0).equals(imageA[0])||grid.getChildAt(1).equals(imageA[0])||grid.getChildAt(2).equals(imageA[0])){
-                pointSystem+=20;
-                points.setText("Points: " + pointSystem);
-            }else if(grid.getChildAt(0).equals(imageA[1])&&grid.getChildAt(1).equals(imageA[1])&&grid.getChildAt(2).equals(imageA[1])){
-                pointSystem+=50;
-                points.setText("Points: " + pointSystem);
-            }else if(grid.getChildAt(i).equals(imageA[2])){
-                pointSystem+=5;
-                points.setText("Points: " + pointSystem);
+            if(slot1.equals(slot2)&&slot2.equals(slot3)){
+                pointSystem+=100;
+            }else if(slot1.equals(slot2)||slot1.equals(slot3)||slot2.equals(slot3)) {
+                pointSystem += 20;
             }else{
-                pointSystem+=1;
-                points.setText("Points: " + pointSystem);
+                pointSystem+=5;
             }
-
-            spinStop.setText("SPIN");
-            isSpin = true;
-
+            points.setText("Points: "+pointSystem+"");
             handler.removeCallbacks(update);
+            isSpin = true;
 
         }
     }
     private class Update implements Runnable{
-        int imageA[] = {R.drawable.cherry, R.drawable.strawberry, R.drawable.grape, R.drawable.pear};
-        int i = 0;
+        @Override
         public void run(){
-            if(i<3){
-                handler.postDelayed(this, 500);
-                i++;
-            }else{
-                i=0;
-            }
+            int speedUp = seeker.getProgress()*10;
+            grid.removeAllViews();
+            for(int i=0; i<grid.getColumnCount();i++){
+                ImageView imageView = (ImageView) getLayoutInflater().inflate(R.layout.image_layout, grid, false);
+                Drawable image = getResources().getDrawable(imageA[rand.nextInt(imageA.length)]);
+                imageView.setImageDrawable(image);
+                grid.addView(imageView);
 
+            }
+            handler.postDelayed(this, 200-speedUp);
         }
 
     }
+
+
 }
