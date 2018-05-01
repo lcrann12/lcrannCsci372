@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.projectmarch29.MainActivity">
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
+    <ListView
+        android:id="@+id/movieList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTitle">
+
+    </ListView>
+    <Button
+        android:id="@+id/addMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/movieList"
+        android:layout_centerHorizontal="true"
+        android:text="ADD MOVIE"
+        android:textSize="20sp"
+        android:onClick="buttonPressed"
+        android:layout_marginTop="20dp"/>
+</RelativeLayout>
