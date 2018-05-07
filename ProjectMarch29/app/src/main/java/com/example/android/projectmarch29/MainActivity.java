@@ -1,7 +1,11 @@
 package com.example.android.projectmarch29;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> moviesAdded;
     private ArrayList<String> moviesIDAdded;
     private ArrayAdapter<String> adapter;
+    private SharedPreferences pref;
     //private Button addMovies
     //Lenny's Code
     @Override
@@ -39,34 +44,34 @@ public class MainActivity extends AppCompatActivity {
         }
 
         adapter = new ArrayAdapter<String>(this, R.layout.list_item_view, moviesAdded);
-        movieList.setAdapter(adapter);
+        movieList.setAdapter(adapter);//Y
         movieList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         String url = "https://www.imdb.com/title/";
                         url += moviesIDAdded.get(i);
-                        Intent in = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        Intent in = new Intent(Intent.ACTION_VIEW, Uri.parse(url));//N
                         startActivity(in);
                     }
+
                 }
         );
+
         movieList.setOnItemLongClickListener(
                 new AdapterView.OnItemLongClickListener() {
 
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Toast.makeText(getApplicationContext(), "You removed "+moviesAdded.get(i), Toast.LENGTH_SHORT).show();
-                        moviesAdded.remove(i);
+                        moviesAdded.remove(i);//N
                         moviesIDAdded.remove(i);
                         adapter.notifyDataSetChanged();
                         movieList.setAdapter(adapter);
-
-                        return true;
+                        return true;//E
                     }
                 }
         );
-
 
     }
 
@@ -79,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         String movieName = data.getStringExtra("MNAME");
         String movieId = data.getStringExtra("MID");
-        ArrayAdapter<String> adapter;
+        ArrayAdapter<String> adapter;//Lenny's Code
         adapter = new ArrayAdapter<String>(this, R.layout.list_item_view, moviesAdded);
         movieList.setAdapter(adapter);
         movieList.setOnItemClickListener(
@@ -94,7 +99,20 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
         moviesAdded.add(movieName);
-        moviesIDAdded.add(movieId);
+        moviesIDAdded.add(movieId);//L
 
+    }
+    @Override
+    public void onStart(){
+        super.onStart();
+        SharedPreferences pref;
+        pref = this.getApplicationContext().getSharedPreferences("moviesAdded", MODE_PRIVATE);
+
+    }
+    @Override
+    public void onStop(){
+        super.onStop();
+        SharedPreferences pref;
+        pref = PreferenceManager.getDefaultSharedPreferences()
     }
 }
