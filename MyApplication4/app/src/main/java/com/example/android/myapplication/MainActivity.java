@@ -1,5 +1,7 @@
 package com.example.android.myapplication;
 
+import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -101,7 +103,11 @@ public class MainActivity extends AppCompatActivity {
             Drawable.ConstantState slot1 = grid1.getConstantState();
             Drawable.ConstantState slot2 = grid2.getConstantState();
             Drawable.ConstantState slot3 = grid3.getConstantState();
-
+            //bitmap values for each image
+            //cherry = @7bde28a
+            //pear = @6227600
+            //strawberry = @46a61d7
+            //grape= @a0995df
             if(slot1.equals(slot2)&&slot2.equals(slot3)){
                 pointSystem+=100;
             }else if(slot1.equals(slot2)||slot1.equals(slot3)||slot2.equals(slot3)) {
@@ -109,11 +115,15 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 pointSystem+=5;
             }
-            points.setText("Points: "+pointSystem+"");
+            points.setText("Points: "+pointSystem);
             handler.removeCallbacks(update);
             isSpin = true;
 
         }
+    }
+    public void extraButtonPressed(View v){
+        Intent i = new Intent(this, HelpActivity.class);
+        startActivityForResult(i, 1);
     }
     private class Update implements Runnable{
         @Override

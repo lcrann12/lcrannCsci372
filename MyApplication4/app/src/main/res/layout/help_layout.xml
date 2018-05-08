@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/pointLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Point System:"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/same3"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pointLabel"
+        android:textColor="#AA1212"
+        android:text="3 of the same: +100"/>
+
+    <TextView
+        android:id="@+id/same2"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/same3"
+        android:textColor="#FFCC11"
+        android:text="2 of the same: +20" />
+
+    <TextView
+        android:id="@+id/same1"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/same2"
+        android:textColor="#112211"
+        android:text="Anything else: +5" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/same1"
+        android:layout_centerHorizontal="true"
+        android:padding="100dp"
+        android:text="Hint: Hit the phone's Back button to Go Back"/>
+</RelativeLayout>
