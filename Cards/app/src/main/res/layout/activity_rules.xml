@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RulesActivity"
+    android:background="#22A1">
+    <TextView
+        android:id="@+id/rulesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rules of Basically Blackjack"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textColor="#BB1122"
+        android:textAllCaps="true"/>
+    <ImageView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rulesTitle"
+        android:src="@drawable/cardback"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/rulesText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rulesTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:text="The goal of the game is to get card values as close as possible to the unknown card"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textColor="#1122EE"/>
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rulesText"
+        android:layout_margin="50dp"
+        android:max="8"/>
+    <TextView
+        android:id="@+id/seekLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekbar"
+        android:layout_centerHorizontal="true"
+        android:text="1/9"
+        android:textSize="12sp"/>
+
+</RelativeLayout>
