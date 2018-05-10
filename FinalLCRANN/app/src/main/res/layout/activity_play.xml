@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#EEDD">
+
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Points: 0"
+        android:textSize="20sp"
+        android:textColor="#AA1122"/>
+    <ImageView
+        android:id="@+id/cardImage"
+        android:layout_below="@id/points"
+        android:padding="10dp"
+        android:layout_width="65dp"
+        android:layout_height="87dp"
+        android:src="@drawable/cardback"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/hit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hit"
+        android:layout_below="@id/cardImage"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:onClick="hitPressed"/>
+    <Button
+        android:id="@+id/stay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Stay"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_below="@id/hit"
+        android:onClick="stayPressed"/>
+    <ImageView
+        android:id="@+id/playerCard"
+
+        android:layout_width="65dp"
+        android:layout_height="87dp"
+        android:src="@drawable/cardback"
+        android:layout_below="@id/stay"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/current"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playerCard"
+        android:layout_centerHorizontal="true"
+        android:text="Current Values: 0"
+        android:textSize="20sp"/>
+
+</RelativeLayout>

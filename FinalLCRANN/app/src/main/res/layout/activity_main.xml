@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.finallcrann.MainActivity"
+    android:background="#11EEAA">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Basically Blackjack"
+        android:textSize="17sp"
+        android:textColor="#112211"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/rules"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/title"
+        android:layout_marginTop="10dp"
+        android:text="RULES"
+        android:onClick="rulesPressed"/>
+    <Button
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/rules"
+        android:layout_marginTop="200dp"
+        android:textColor="#11EEAA"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="playPressed"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cardback"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/rules"
+        android:padding="50dp" />
+</RelativeLayout>
